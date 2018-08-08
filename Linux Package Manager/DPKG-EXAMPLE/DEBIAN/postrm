@@ -16,9 +16,22 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+echo "postrm called with argument \`$1'" >&2
 
 case "$1" in
-    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    purge)                      # dpkg -P
+
+    ;;
+
+    remove)                     # dpkg -r
+
+    ;;
+
+    upgrade)                    # dpkg -u
+
+    ;;
+
+    failed-upgrade|abort-install|abort-upgrade|disappear)
 
     ;;
 
