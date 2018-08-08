@@ -1,0 +1,23 @@
+* Linux 平台上的软件包管理
+  [[https://www.ibm.com/developerworks/cn/linux/l-cn-rpmdpkg/index.html][Linux 平台上的软件包管理]]
+** RPM/DPKG 两大阵营简介
+   在 GNU/Linux( 以下简称 Linux) 操作系统中，RPM 和 DPKG 为最常见的两类软件包管理工具，他们分别应用于基于 RPM 软件包的 Linux 发行版本和 DEB 软件包的 Linux 发行版本。软件包管理工具的作用是提供在操作系统中安装，升级，卸载需要的软件的方法，并提供对系统中所有软件状态信息的查询。
+
+   RPM 全称为 Redhat Package Manager，最早由 Red Hat 公司制定实施，随后被 GNU 开源操作系统接受并成为很多 Linux 系统 (RHEL) 的既定软件标准。与 RPM 进行竞争的是基于 Debian 操作系统 (UBUNTU) 的 DEB 软件包管理工具－ DPKG，全称为 Debian Package，功能方面与 RPM 相似。二者之具体比较不在本文范围之内。
+
+*** 用DPKG 打包软件
+   /* 学习如何为 Debian 用户构建易于分发的软件包 */
+   [[https://www.ibm.com/developerworks/cn/linux/l-debpkg/index.html][创建 Debian Linux 软件包]]
+
+***  用 RPM 打包软件
+   /* 学习如何为 Redhat 用户构建易于分发的软件包 */
+   [[https://www.ibm.com/developerworks/cn/linux/management/package/rpm/part1/index.html][用 RPM 打包软件，第 1 部分]]
+   [[https://www.ibm.com/developerworks/cn/linux/management/package/rpm/part2/index.html][用 RPM 打包软件，第 2 部分]]
+   [[https://www.ibm.com/developerworks/cn/linux/management/package/rpm/part3/index.html][用 RPM 打包软件，第 3 部分]]
+
+** 更友好的包管理软件 - YUM
+   YUM 基于 RPM 包管理工具，能够从指定的源空间（服务器，本地目录等）自动下载目标 RPM 包并且安装，可以自动处理依赖性关系并进行下载、安装，无须繁琐地手动下载、安装每一个需要的依赖包。此外，YUM 的另一个功能是进行系统中所有软件的升级。如上所述，YUM 的 RPM 包来源于源空间，在 RHEL 中由 /etc/yum.repos.d/ 目录中的 .repo 文件配置指定，如 rhel-debuginfo.repo 的内容：
+** 更友好的包管理软件 - APT
+   APT 的全称为 Advanced Packaging Tools 。与 YUM 对应，它最早被设计成 DPKG 的前端软件，现在通过 apt-rpm 也支持 rpm 管理。而本节本节将介绍 APT 作为 DPKG 前端的使用。 APT 的主要包管理工具为 APT-GET，通过此工具可满足和上述 YUM 相似的功能要求。
+** RPM 与 DEB 的兼容 - Alien
+   Alien 工具可以将 RPM 软件包转换成 DEB 软件包，或把 DEB 软件包转换成 RPM 软件包，以此适应兼容性的需要。注意首先请在系统中安装 alien 。

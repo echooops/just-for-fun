@@ -1,0 +1,9 @@
+Package: examples
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: i386
+Maintainer: echooops <echooops@outlook.com>
+Description: The description can contain free-form text
+             describing the function of the program, what
+             kind of features it has, and so on.

@@ -1,0 +1,57 @@
+* 术语表 Advent Glossary
+** App 应用程序
+   “应用程序”的缩写，通常指智能手机/平板电脑上的软件程序。
+** Attacker 攻击者
+   对计算机系统所保存的信息进行故意破坏的行为人。这些破坏行为包括对信息进行如下恶意操作：更改、损坏、盗取、或者禁用。
+** Breach 侵害
+** Browser 浏览器
+** Brute force attack 暴力破解攻击
+** Certificate 证书
+** Antivirus 杀毒软件
+** Botnet 僵尸网络
+** Bring your own device (BYOD) 自带设备
+** Cloud 云
+** Cyber attack 网络攻击
+** Credentials 凭证
+** Data at rest 搁置数据
+** Dictionary attack 字典攻击
+** Download attack 下载式攻击
+** Exploit 漏洞利用
+** Hacker 黑客
+** Cyber security 网络安全
+** Denial of Service (DoS) 拒绝服务攻击
+** Digital footprint 数字足迹
+** Encryption 加密
+** End user device 终端用户设备
+** Honeypot (honeynet) 蜜罐 (蜜网)
+** Insider risks 内部风险
+** Malvertising 恶意广告
+** Malware 恶意代码
+** Mitigation 缓释措施
+** Network 网络
+** Firewall 防火墙
+** internet of Things (loT) 物联网
+** Macro 宏
+** Patching 打补丁
+** Phishing 网络钓鱼
+** Pentest 渗透测试
+** Pharming 域欺骗技术
+** Platform 平台
+** Router 路由器
+** Sanitisation 彻底删除
+** Smishing 钓鱼短信
+** Ransomware 勒索软件
+** Software as a Service (SaaS) 软件即服务
+** Social engineering 社会工程学
+** Spear-phishing 鱼叉式网络钓鱼
+** Trojan 木马
+** Virtual Private Network (VPN) 虚拟专用网络
+** Virus 病毒
+** Vulnerability 漏洞
+** Incident 事件
+** Two-factor authentication (2FA) 双因素认证
+** Water-holing (watering hole attack) 水坑 (水坑式攻击)
+** Whaling 鲸钓
+** Whitelisting 白名单
+** Zero-day 零日漏洞
+   最近发现的漏洞（或缺陷）因其尚未被其所属厂商或反病毒公司知悉而且能被黑客利用。

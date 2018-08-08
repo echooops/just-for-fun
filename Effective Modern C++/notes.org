@@ -1,0 +1,57 @@
+** 理解 decltype
+*** 要点速记
+    - 绝大多数情况下，decltype 会得出变量或表达式的型别而不作任何修改。
+    - 对于类型为 T 的左值表达式，除非该表达式仅有一个名字，decltype 总是得出类型 T&。
+    - C++14 支持 decltype(auto)，和 auto 一样，它会从其初始化表达式出发来推导型别，但是它的型别推导使用的是 decltype 的规则。
+** 掌握查看型别推导结果的方法
+   typeid(T) 返回 std::type_info对象。
+** 优先选用 auto 而非显示型别声明
+
+** 当 auto 推导的型别不符合要求时 使用带显式型别的初始化物习惯用法
+   “隐形”的代理型别可以导致 auto 根据初始化表达式推导出 “错误的” 型别。
+   #+BEGIN_SRC C++
+     std::vector<bool> v{false, true, true};
+     auto x = v[1];
+     // x 类型 NSt3__115__bit_referenceINS_6vectorIbNS_9allocatorIbEEEELb1EEE
+     auto y = static_cast<bool>(v[1]);
+     // y 类型 bool
+   #+END_SRC
+*** 要点速记
+    - “隐形”的代理型别可以导致 auto 根据初始化表达式推导出 “错误的” 型别。
+    - 带显式型别的初始化物习惯用法强制 auto 推导出你想要的型别。
+* 转向现代 C++
+** 在创建对象时注意区分 () 和 {}
+   大括号初始化禁止内建类型之间进行隐式窄化型别转换（norrowing conversion）。
+   #+BEGIN_SRC C++
+     double x, y, z;
+     int sum1{x + y + z};            // 错误！norrowing conversion
+     int sum2(x + y + z);            // 没问题（表达式的值被截断为int）
+     int sum3 = x + y + z;           // 同上
+   #+END_SRC
+   有一个或多个构造函数声明了任何一个具备 std::initializer_list 型别的型参，那么采用了大括号初始化语法的调用语句会强烈地优先选用带有 std::initializer_list 型别型参的重载版本。
+   #+BEGIN_SRC C++
+     class Widget {
+     public:
+         Widget(int i, bool b);
+         Widget(std::initializer_list<long double> il);
+         // 以下操作符重载会被 w4 构造劫持
+         operator float() const;
+     };
+     // 调用第一个构造函数
+     Widget w1(10, true);
+     // 调用第三个构造函数，10 和 true 被强制转换为 long double
+     Widget w2{10, true};
+     // 调用复制构造函数
+     Widget w3(w1);
+     // w1 的返回值被强制转为 flot，随后又被强制转换成 long double
+     Widget w4{w1};
+   #+END_SRC
+*** 要点速记
+    - 大括号初始化可以应用的语境最为宽泛，可以阻止隐式窄化型别转换，还对最令人苦恼之解析语法免疫。
+    - 在构造函数重载决议期间，只要有任何可能，大括号初始化物就会与带有 std::initializer_list 型别的型参相匹配，即使其他重载版本有着貌似更加匹配的型参表。
+    - 使用小括号还是大括号，会造成结果大相径庭的一个例子是：使用两个实参来创建一个 std::vercotr<数值型别> 对象。
+    - 在模版内容进行对象创建时，到底应该使用小括号还是大括号会成为一个棘手问题。
+** 优先选用 nullptr 而非 0 或 NULL
+*** 要点速记
+    - 相对于 0 或 NULL，优先选用nullptr。
+    - 避免在整形和指针型别之间重载。
